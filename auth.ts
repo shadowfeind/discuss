@@ -4,15 +4,15 @@ import { db } from "./db"
 import GitHub from "@auth/core/providers/github"
 
 
-if(process.env.GITHUB_CLIENBT_ID || process.env.GITHUB_CLIENT_SECRET){
+if(!process.env.GITHUB_CLIENT_ID || !process.env.GITHUB_CLIENT_SECRET){
     throw new Error("Missing github oauth credentials")
 }
 
-NextAuth({
+export const {handlers: {GET, POST}, auth, signOut, signIn} = NextAuth({
     adapter: PrismaAdapter(db),
     providers: [
         GitHub({
-            clientId: process.env.GITHUB_CLIENBT_ID,
+            clientId: process.env.GITHUB_CLIENT_ID,
             clientSecret: process.env.GITHUB_CLIENT_SECRET
         })
     ],
