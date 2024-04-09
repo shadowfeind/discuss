@@ -1,22 +1,12 @@
-import { signIn, signOut } from "@/actions";
-import { auth } from "@/auth";
-import { Button } from "@nextui-org/react";
+import TopicCreateForm from "@/components/topics/topicCreateForm";
 
 export default async function Home() {
-  const session = await auth();
   return (
-    <div>
-      <form action={signIn}>
-        <Button type="submit">Sign In</Button>
-      </form>
-      <form action={signOut}>
-        <Button type="submit">Sign Out</Button>
-      </form>
-      {session?.user ? (
-        <div>{JSON.stringify(session.user)}</div>
-      ) : (
-        <div>signed out</div>
-      )}
+    <div className="grid grid-cols-4 gap-4 p-4">
+      <div className="col-span-3">
+        <h1 className="text-xl m-2">Top Posts</h1>
+      </div>
+      <TopicCreateForm />
     </div>
   );
 }
