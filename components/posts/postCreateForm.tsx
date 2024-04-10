@@ -12,8 +12,14 @@ import FormBottom from "../common/form-bottom";
 import { useFormState } from "react-dom";
 import { createPosts } from "@/actions";
 
-const PostCreateForm = () => {
-  const [formState, action] = useFormState(createPosts, { errors: {} });
+interface PostCreateFormProps {
+  slug: string;
+}
+
+const PostCreateForm = ({ slug }: PostCreateFormProps) => {
+  const [formState, action] = useFormState(createPosts.bind(null, slug), {
+    errors: {},
+  });
   return (
     <Popover placement="left">
       <PopoverTrigger>
