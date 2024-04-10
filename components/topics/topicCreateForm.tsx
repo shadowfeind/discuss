@@ -9,6 +9,7 @@ import {
   Textarea,
 } from "@nextui-org/react";
 import { useFormState } from "react-dom";
+import FormBottom from "../common/form-bottom";
 
 const TopicCreateForm = () => {
   const [formState, action] = useFormState(createTopic, {
@@ -30,7 +31,7 @@ const TopicCreateForm = () => {
                 labelPlacement="outside"
                 placeholder="name"
                 isInvalid={!!formState.errors.name}
-                errorMessage={formState.errors.name?.join(",")}
+                errorMessage={formState.errors.name?.join(", ")}
               />
               <Textarea
                 name="description"
@@ -38,7 +39,7 @@ const TopicCreateForm = () => {
                 labelPlacement="outside"
                 placeholder="Describe your topic"
                 isInvalid={!!formState.errors.description}
-                errorMessage={formState.errors.description?.join(",")}
+                errorMessage={formState.errors.description?.join(", ")}
               />
             </h3>
             {formState.errors._form ? (
@@ -47,7 +48,7 @@ const TopicCreateForm = () => {
               </div>
             ) : null}
 
-            <Button type="submit">Create</Button>
+            <FormBottom>Submit</FormBottom>
           </div>
         </form>
       </PopoverContent>
