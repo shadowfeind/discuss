@@ -4,7 +4,6 @@ import { auth } from "@/auth";
 import { db } from "@/db";
 import paths from "@/paths";
 import { Post } from "@prisma/client";
-import { error } from "console";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
